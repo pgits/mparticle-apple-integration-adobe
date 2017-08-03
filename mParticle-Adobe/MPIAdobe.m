@@ -25,6 +25,15 @@ NSString *emailIdentityKey = @"email";
 
 NSString *idSuffix = @"%01";
 
+NSString *errorResponseKey = @"error_msg";
+NSString *errorMessageKey = @"msg";
+NSString *errorCodeKey = @"code";
+
+NSString *invalidMarketingCloudId = @"<null>";
+
+NSString *errorDomain = @"mParticle-Adobe";
+NSString *errorKey = @"Error";
+
 NSString *marketingCloudIdUserDefaultsKey = @"ADBMOBILE_PERSISTED_MID";
 
 @interface MPIAdobe ()
@@ -111,7 +120,17 @@ NSString *marketingCloudIdUserDefaultsKey = @"ADBMOBILE_PERSISTED_MID";
             
         }
         
+        NSDictionary *errorDictionary = dictionary[errorResponseKey];
+        if (errorDictionary) {
+            completion(nil, [NSError errorWithDomain:errorDomain code:0 userInfo:errorDictionary]);
+            return;
+        }
+        
         NSString *marketingCloudId = dictionary[marketingCloudIdKey];
+        if ([marketingCloudId isEqualToString:invalidMarketingCloudId]) {
+            marketingCloudId = nil;
+        }
+        
         weakSelf.region = dictionary[regionKey];
         weakSelf.blob = dictionary[blobKey];
         
