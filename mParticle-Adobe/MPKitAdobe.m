@@ -1,14 +1,5 @@
 #import "MPKitAdobe.h"
 
-@implementation MPIAdobe
-
-- (instancetype)init {
-    self = [super init];
-    return self;
-}
-
-@end
-
 #pragma mark - MPKitAdobe
 @interface MPKitAdobe ()
 

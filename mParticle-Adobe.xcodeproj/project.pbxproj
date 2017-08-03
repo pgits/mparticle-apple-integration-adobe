@@ -11,6 +11,8 @@
 		DB0773E31DB916B80031F3E3 /* MPKitAdobe.h in Headers */ = {isa = PBXBuildFile; fileRef = DB0773E11DB916B80031F3E3 /* MPKitAdobe.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB0773E41DB916B80031F3E3 /* MPKitAdobe.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0773E21DB916B80031F3E3 /* MPKitAdobe.m */; };
 		DB0773E61DB917DB0031F3E3 /* mParticle_Apple_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0773E51DB917DB0031F3E3 /* mParticle_Apple_SDK.framework */; };
+		DB6F8E051F337B2500328DC2 /* MPIAdobe.h in Headers */ = {isa = PBXBuildFile; fileRef = DB6F8E031F337B2500328DC2 /* MPIAdobe.h */; };
+		DB6F8E061F337B2500328DC2 /* MPIAdobe.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6F8E041F337B2500328DC2 /* MPIAdobe.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		DB0773E11DB916B80031F3E3 /* MPKitAdobe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPKitAdobe.h; sourceTree = "<group>"; };
 		DB0773E21DB916B80031F3E3 /* MPKitAdobe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPKitAdobe.m; sourceTree = "<group>"; };
 		DB0773E51DB917DB0031F3E3 /* mParticle_Apple_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = mParticle_Apple_SDK.framework; path = Carthage/Build/iOS/mParticle_Apple_SDK.framework; sourceTree = "<group>"; };
+		DB6F8E031F337B2500328DC2 /* MPIAdobe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPIAdobe.h; sourceTree = "<group>"; };
+		DB6F8E041F337B2500328DC2 /* MPIAdobe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPIAdobe.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				DB0773E11DB916B80031F3E3 /* MPKitAdobe.h */,
 				DB0773E21DB916B80031F3E3 /* MPKitAdobe.m */,
+				DB6F8E031F337B2500328DC2 /* MPIAdobe.h */,
+				DB6F8E041F337B2500328DC2 /* MPIAdobe.m */,
 				DB0773D91DB916610031F3E3 /* mParticle_Adobe.h */,
 				DB0773DA1DB916610031F3E3 /* Info.plist */,
 			);
@@ -70,6 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB0773E31DB916B80031F3E3 /* MPKitAdobe.h in Headers */,
+				DB6F8E051F337B2500328DC2 /* MPIAdobe.h in Headers */,
 				DB0773DB1DB916610031F3E3 /* mParticle_Adobe.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB6F8E061F337B2500328DC2 /* MPIAdobe.m in Sources */,
 				DB0773E41DB916B80031F3E3 /* MPKitAdobe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
