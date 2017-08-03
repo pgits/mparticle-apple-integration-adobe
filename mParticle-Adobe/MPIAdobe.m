@@ -25,7 +25,7 @@ NSString *emailIdentityKey = @"email";
 
 NSString *idSuffix = @"%01";
 
-NSString *marketingCloudUserIdDefaultsKey = @"ADBMOBILE_PERSISTED_MID";
+NSString *marketingCloudIdUserDefaultsKey = @"ADBMOBILE_PERSISTED_MID";
 
 @interface MPIAdobe ()
 
@@ -117,6 +117,10 @@ NSString *marketingCloudUserIdDefaultsKey = @"ADBMOBILE_PERSISTED_MID";
         
         completion(marketingCloudId, nil);
     }] resume];
+}
+
+- (NSString *)marketingCloudIdFromUserDefaults {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:marketingCloudIdUserDefaultsKey];
 }
 
 @end
