@@ -45,7 +45,7 @@ NSString *marketingCloudIdUserDefaultsKey = @"ADBMOBILE_PERSISTED_MID";
 
 @implementation MPIAdobe
 
-- (void)sendRequestWithMarketingCloudId:(NSString *)marketingCloudId advertisingId:(NSString *)advertisingId pushToken:(NSString *)pushToken organizationId:(NSString *)organizationId userIdentities:(NSDictionary<NSNumber *, NSString *> *)userIdentities completion:(void (^)(NSString *marketingCloudId, NSError *))completion {
+- (void)sendRequestWithMarketingCloudId:(NSString *)marketingCloudId advertisingId:(NSString *)advertisingId pushToken:(NSString *)pushToken organizationId:(NSString *)organizationId userIdentities:(NSDictionary<NSNumber *, NSString *> *)userIdentities completion:(void (^)(NSString *marketingCloudId, NSError *error))completion {
     
     NSDictionary *userIdentityMappings = @{
                                            @(MPUserIdentityOther): @"other",
