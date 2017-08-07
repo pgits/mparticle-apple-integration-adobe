@@ -17,7 +17,7 @@ NSString *versionKey = @"d_ver";
 NSString *platform = @"ios";
 NSString *version = @"2";
 
-NSString *advertisingIdDeviceKey = @"20915";
+NSString *advertiserIdDeviceKey = @"20915";
 NSString *pushTokenDeviceKey = @"20920";
 
 NSString *customerIdIdentityKey = @"customerid";
@@ -45,7 +45,7 @@ NSString *marketingCloudIdUserDefaultsKey = @"ADBMOBILE_PERSISTED_MID";
 
 @implementation MPIAdobe
 
-- (void)sendRequestWithMarketingCloudId:(NSString *)marketingCloudId advertisingId:(NSString *)advertisingId pushToken:(NSString *)pushToken organizationId:(NSString *)organizationId userIdentities:(NSDictionary<NSNumber *, NSString *> *)userIdentities completion:(void (^)(NSString *marketingCloudId, NSError *error))completion {
+- (void)sendRequestWithMarketingCloudId:(NSString *)marketingCloudId advertiserId:(NSString *)advertiserId pushToken:(NSString *)pushToken organizationId:(NSString *)organizationId userIdentities:(NSDictionary<NSNumber *, NSString *> *)userIdentities completion:(void (^)(NSString *marketingCloudId, NSError *error))completion {
     
     NSDictionary *userIdentityMappings = @{
                                            @(MPUserIdentityOther): @"other",
@@ -69,8 +69,8 @@ NSString *marketingCloudIdUserDefaultsKey = @"ADBMOBILE_PERSISTED_MID";
         [queryItems addObject:[NSURLQueryItem queryItemWithName:marketingCloudIdKey value:marketingCloudId]];
     }
     
-    if (advertisingId) {
-        [queryItems addObject:[NSURLQueryItem queryItemWithName:deviceIdKey value:[NSString stringWithFormat:@"%@%@%@", advertisingIdDeviceKey, idSuffix, advertisingId]]];
+    if (advertiserId) {
+        [queryItems addObject:[NSURLQueryItem queryItemWithName:deviceIdKey value:[NSString stringWithFormat:@"%@%@%@", advertiserIdDeviceKey, idSuffix, advertiserId]]];
     }
     
     if (pushToken) {

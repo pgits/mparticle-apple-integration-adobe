@@ -9,6 +9,7 @@ NSString *organizationIdConfigurationKey = @"organizationId";
 
 @property (nonatomic) NSString *organizationId;
 @property (nonatomic) MPIAdobe *adobe;
+@property (nonatomic) NSString *pushToken;
 
 @end
 
@@ -67,12 +68,34 @@ NSString *organizationIdConfigurationKey = @"organizationId";
     return nil;
 }
 
-- (NSString *)advertisingId {
+- (NSString *)advertiserId {
     return nil;
+        NSString *advertiserId = nil;
+        Class MPIdentifierManager = NSClassFromString(@"ASIdentifierManager");
+        
+        if (MPIdentifierManager) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            SEL selector = NSSelectorFromString(@"sharedManager");
+            id<NSObject> adIdentityManager = [MPIdentifierManager performSelector:selector];
+            
+            selector = NSSelectorFromString(@"isAdvertisingTrackingEnabled");
+            BOOL advertisingTrackingEnabled = (BOOL)[adIdentityManager performSelector:selector];
+            if (advertisingTrackingEnabled) {
+                selector = NSSelectorFromString(@"advertisingIdentifier");
+                advertiserId = [[adIdentityManager performSelector:selector] UUIDString];
+            }
+#pragma clang diagnostic pop
+#pragma clang diagnostic pop
+        }
+        
+        return advertiserId;
 }
 
 - (NSString *)pushToken {
-    return nil;
+    return _pushToken;
 }
 
 - (NSDictionary *)userIdentitiesDictionary {
@@ -93,15 +116,28 @@ NSString *organizationIdConfigurationKey = @"organizationId";
         [[MParticle sharedInstance] setIntegrationAttributes:@{marketingCloudIdIntegrationAttributeKey: marketingCloudId} forKit:[[self class] kitCode]];
     }
     
-    NSString *advertisingId = [self advertisingId];
+    NSString *advertiserId = [self advertiserId];
     NSString *pushToken = [self pushToken];
     NSDictionary *userIdentities = [self userIdentitiesDictionary];
     
-    [_adobe sendRequestWithMarketingCloudId:marketingCloudId advertisingId:advertisingId pushToken:pushToken organizationId:_organizationId userIdentities:userIdentities completion:^(NSString *marketingCloudId, NSError *error) {
+    [_adobe sendRequestWithMarketingCloudId:marketingCloudId advertiserId:advertiserId pushToken:pushToken organizationId:_organizationId userIdentities:userIdentities completion:^(NSString *marketingCloudId, NSError *error) {
         if (!error && marketingCloudId.length) {
             [[MParticle sharedInstance] setIntegrationAttributes:@{marketingCloudIdIntegrationAttributeKey: marketingCloudId} forKit:[[self class] kitCode]];
         }
     }];
+}
+
+- (MPKitExecStatus *)setDeviceToken:(NSData *)deviceToken {
+    _pushToken = [[NSString alloc] initWithData:deviceToken encoding:NSUTF8StringEncoding];
+    [self sendNetworkRequest];
+    MPKitExecStatus *execStatus = [[MPKitExecStatus alloc] initWithSDKCode:[[self class] kitCode] returnCode:MPKitReturnCodeSuccess];
+    return execStatus;
+}
+
+- (MPKitExecStatus *)setUserIdentity:(NSString *)identityString identityType:(MPUserIdentity)identityType {
+    [self sendNetworkRequest];
+    MPKitExecStatus *execStatus = [[MPKitExecStatus alloc] initWithSDKCode:[[self class] kitCode] returnCode:MPKitReturnCodeSuccess];
+    return execStatus;
 }
 
 - (nonnull MPKitExecStatus *)didBecomeActive {
