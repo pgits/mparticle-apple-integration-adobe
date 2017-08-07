@@ -65,7 +65,8 @@ NSString *organizationIdConfigurationKey = @"organizationId";
 }
 
 - (NSString *)marketingCloudIdFromIntegrationAttributes {
-    return nil;
+    NSDictionary *dictionary = [MPKitAPI integrationAttributesForKit:[[self class] kitCode]];
+    return dictionary[marketingCloudIdIntegrationAttributeKey];
 }
 
 - (NSString *)advertiserId {
