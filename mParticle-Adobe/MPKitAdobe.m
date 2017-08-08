@@ -15,6 +15,8 @@ NSString *organizationIdConfigurationKey = @"organizationId";
 
 @implementation MPKitAdobe
 
+@synthesize userIdentities = _userIdentities;
+
 + (NSNumber *)kitCode {
     return @124;
 }
@@ -114,7 +116,9 @@ NSString *organizationIdConfigurationKey = @"organizationId";
     NSString *marketingCloudId = [self marketingCloudIdFromIntegrationAttributes];
     if (!marketingCloudId) {
         marketingCloudId = [_adobe marketingCloudIdFromUserDefaults];
-        [[MParticle sharedInstance] setIntegrationAttributes:@{marketingCloudIdIntegrationAttributeKey: marketingCloudId} forKit:[[self class] kitCode]];
+        if (marketingCloudId.length) {
+            [[MParticle sharedInstance] setIntegrationAttributes:@{marketingCloudIdIntegrationAttributeKey: marketingCloudId} forKit:[[self class] kitCode]];
+        }
     }
     
     NSString *advertiserId = [self advertiserId];

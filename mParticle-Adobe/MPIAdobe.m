@@ -131,7 +131,7 @@ NSString *marketingCloudIdUserDefaultsKey = @"ADBMOBILE_PERSISTED_MID";
             marketingCloudId = nil;
         }
         
-        weakSelf.region = dictionary[regionKey];
+        weakSelf.region = [NSString stringWithFormat:@"%@", dictionary[regionKey]];
         weakSelf.blob = dictionary[blobKey];
         
         completion(marketingCloudId, nil);
