@@ -10,6 +10,7 @@ NSString *organizationIdConfigurationKey = @"organizationId";
 @property (nonatomic) NSString *organizationId;
 @property (nonatomic) MPIAdobe *adobe;
 @property (nonatomic) NSString *pushToken;
+@property (nonatomic) MPKitAPI *kitApi;
 
 @end
 
@@ -43,6 +44,7 @@ NSString *organizationIdConfigurationKey = @"organizationId";
     _configuration = configuration;
     _started       = startImmediately;
     _adobe         = [[MPIAdobe alloc] init];
+    _kitApi        = [[MPKitAPI alloc] initWithKitCode:[[self class] kitCode]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                            selector:@selector(didEnterBackground:)
@@ -67,49 +69,37 @@ NSString *organizationIdConfigurationKey = @"organizationId";
 }
 
 - (NSString *)marketingCloudIdFromIntegrationAttributes {
-    NSDictionary *dictionary = [MPKitAPI integrationAttributesForKit:[[self class] kitCode]];
+    NSDictionary *dictionary = _kitApi.integrationAttributes;
     return dictionary[marketingCloudIdIntegrationAttributeKey];
 }
 
 - (NSString *)advertiserId {
-    return nil;
-        NSString *advertiserId = nil;
-        Class MPIdentifierManager = NSClassFromString(@"ASIdentifierManager");
-        
-        if (MPIdentifierManager) {
+    NSString *advertiserId = nil;
+    Class MPIdentifierManager = NSClassFromString(@"ASIdentifierManager");
+    
+    if (MPIdentifierManager) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            SEL selector = NSSelectorFromString(@"sharedManager");
-            id<NSObject> adIdentityManager = [MPIdentifierManager performSelector:selector];
-            
-            selector = NSSelectorFromString(@"isAdvertisingTrackingEnabled");
-            BOOL advertisingTrackingEnabled = (BOOL)[adIdentityManager performSelector:selector];
-            if (advertisingTrackingEnabled) {
-                selector = NSSelectorFromString(@"advertisingIdentifier");
-                advertiserId = [[adIdentityManager performSelector:selector] UUIDString];
-            }
-#pragma clang diagnostic pop
-#pragma clang diagnostic pop
-        }
+        SEL selector = NSSelectorFromString(@"sharedManager");
+        id<NSObject> adIdentityManager = [MPIdentifierManager performSelector:selector];
         
-        return advertiserId;
+        selector = NSSelectorFromString(@"isAdvertisingTrackingEnabled");
+        BOOL advertisingTrackingEnabled = (BOOL)[adIdentityManager performSelector:selector];
+        if (advertisingTrackingEnabled) {
+            selector = NSSelectorFromString(@"advertisingIdentifier");
+            advertiserId = [[adIdentityManager performSelector:selector] UUIDString];
+        }
+#pragma clang diagnostic pop
+#pragma clang diagnostic pop
+    }
+    
+    return advertiserId;
 }
 
 - (NSString *)pushToken {
     return _pushToken;
-}
-
-- (NSDictionary *)userIdentitiesDictionary {
-    NSArray *identitiesArray = [self userIdentities];
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    [identitiesArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSString *identity = obj[@"i"];
-        NSNumber *type = obj[@"n"];
-        [dictionary setObject:identity forKey:type];
-    }];
-    return dictionary;
 }
 
 - (void)sendNetworkRequest {
@@ -123,7 +113,7 @@ NSString *organizationIdConfigurationKey = @"organizationId";
     
     NSString *advertiserId = [self advertiserId];
     NSString *pushToken = [self pushToken];
-    NSDictionary *userIdentities = [self userIdentitiesDictionary];
+    NSDictionary *userIdentities = _kitApi.userIdentities;
     
     [_adobe sendRequestWithMarketingCloudId:marketingCloudId advertiserId:advertiserId pushToken:pushToken organizationId:_organizationId userIdentities:userIdentities completion:^(NSString *marketingCloudId, NSError *error) {
         if (!error && marketingCloudId.length) {
