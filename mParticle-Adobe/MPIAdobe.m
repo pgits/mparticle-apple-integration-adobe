@@ -1,6 +1,8 @@
 #import "MPIAdobe.h"
 #import "MPKitAdobe.h"
 
+NSString *const MPIAdobeErrorKey = @"MPIAdobeErrorKey";
+
 NSString *host = @"dpm.demdex.net";
 NSString *protocol = @"https";
 NSString *path = @"/id?";
@@ -32,9 +34,39 @@ NSString *errorCodeKey = @"code";
 NSString *invalidMarketingCloudId = @"<null>";
 
 NSString *errorDomain = @"mParticle-Adobe";
+NSString *serverErrorDomain = @"mParticle-Adobe Server Response";
 NSString *errorKey = @"Error";
 
 NSString *marketingCloudIdUserDefaultsKey = @"ADBMOBILE_PERSISTED_MID";
+
+@interface MPIAdobeError ()
+
+- (id)initWithCode:(MPIAdobeErrorCode)code message:(NSString *)message error:(NSError *)error;
+
+@end
+
+@implementation MPIAdobeError
+
+- (id)initWithCode:(MPIAdobeErrorCode)code message:(NSString *)message error:(NSError *)error {
+    self = [super init];
+    if (self) {
+        _code = code;
+        _message = message;
+        _innerError = error;
+    }
+    return self;
+}
+
+- (NSString *)description {
+    NSMutableString *description = [[NSMutableString alloc] initWithString:@"MPIAdobeError {\n"];
+    [description appendFormat:@"  code: %@\n", @(_code)];
+    [description appendFormat:@"  message: %@\n", _message];
+    [description appendFormat:@"  inner error: %@\n", _innerError];
+    [description appendString:@"}"];
+    return description;
+}
+
+@end
 
 @interface MPIAdobe ()
 
@@ -45,7 +77,7 @@ NSString *marketingCloudIdUserDefaultsKey = @"ADBMOBILE_PERSISTED_MID";
 
 @implementation MPIAdobe
 
-- (void)sendRequestWithMarketingCloudId:(NSString *)marketingCloudId advertiserId:(NSString *)advertiserId pushToken:(NSString *)pushToken organizationId:(NSString *)organizationId userIdentities:(NSDictionary<NSNumber *, NSString *> *)userIdentities completion:(void (^)(NSString *marketingCloudId, NSError *error))completion {
+- (void)sendRequestWithMarketingCloudId:(NSString *)marketingCloudId advertiserId:(NSString *)advertiserId pushToken:(NSString *)pushToken organizationId:(NSString *)organizationId userIdentities:(NSDictionary<NSNumber *, NSString *> *)userIdentities completion:(void (^)(NSString *marketingCloudId, NSString *blob, NSString *locationHint, NSError *))completion {
     
     NSDictionary *userIdentityMappings = @{
                                            @(MPUserIdentityOther): @"other",
@@ -108,33 +140,43 @@ NSString *marketingCloudIdUserDefaultsKey = @"ADBMOBILE_PERSISTED_MID";
     __weak MPIAdobe *weakSelf = self;
     
     [[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        
+        void (^callbackWithCode)(MPIAdobeErrorCode code, NSString *message, NSError *error) = ^void(MPIAdobeErrorCode code, NSString *message, NSError *error) {
+            MPIAdobeError *adobeError = [[MPIAdobeError alloc] initWithCode:code message:message error:error];
+            NSError *compositeError = [NSError errorWithDomain:errorDomain code:adobeError.code userInfo:@{MPIAdobeErrorKey:adobeError}];
+            completion(nil, nil, nil, compositeError);
+        };
+        
         if (error) {
-            completion(nil, error);
-            return;
+            return callbackWithCode(MPIAdobeErrorCodeClientFailedRequestError, @"Request failed", error);
         }
 
         NSDictionary *dictionary = nil;
         @try {
             dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         } @catch (NSException *exception) {
-            
+            return callbackWithCode(MPIAdobeErrorCodeClientSerializationError, @"Deserializing the response failed", nil);
         }
         
         NSDictionary *errorDictionary = dictionary[errorResponseKey];
         if (errorDictionary) {
-            completion(nil, [NSError errorWithDomain:errorDomain code:0 userInfo:errorDictionary]);
-            return;
+            NSError *error = [NSError errorWithDomain:serverErrorDomain code:0 userInfo:errorDictionary];
+            return callbackWithCode(MPIAdobeErrorCodeServerError, @"Server returned an error", error);
         }
         
         NSString *marketingCloudId = dictionary[marketingCloudIdKey];
         if ([marketingCloudId isEqualToString:invalidMarketingCloudId]) {
             marketingCloudId = nil;
         }
+
+        NSString *region = [NSString stringWithFormat:@"%@", dictionary[regionKey]];
+        NSString *blob = dictionary[blobKey];
         
-        weakSelf.region = [NSString stringWithFormat:@"%@", dictionary[regionKey]];
-        weakSelf.blob = dictionary[blobKey];
+        weakSelf.region = region;
+        weakSelf.blob = blob;
         
-        completion(marketingCloudId, nil);
+        completion(marketingCloudId, region, blob, nil);
     }] resume];
 }
 

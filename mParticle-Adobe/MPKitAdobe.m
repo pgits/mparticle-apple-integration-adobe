@@ -1,7 +1,9 @@
 #import "MPKitAdobe.h"
 #import "MPIAdobe.h"
 
-NSString *marketingCloudIdIntegrationAttributeKey = @"adobe_mcid";
+NSString *marketingCloudIdIntegrationAttributeKey = @"mid";
+NSString *blobIntegrationAttributeKey = @"aamb";
+NSString *locationHintIntegrationAttributeKey = @"aamlh";
 NSString *organizationIdConfigurationKey = @"organizationId";
 
 #pragma mark - MPKitAdobe
@@ -114,10 +116,25 @@ NSString *organizationIdConfigurationKey = @"organizationId";
     NSString *advertiserId = [self advertiserId];
     NSString *pushToken = [self pushToken];
     NSDictionary *userIdentities = _kitApi.userIdentities;
-    
-    [_adobe sendRequestWithMarketingCloudId:marketingCloudId advertiserId:advertiserId pushToken:pushToken organizationId:_organizationId userIdentities:userIdentities completion:^(NSString *marketingCloudId, NSError *error) {
-        if (!error && marketingCloudId.length) {
-            [[MParticle sharedInstance] setIntegrationAttributes:@{marketingCloudIdIntegrationAttributeKey: marketingCloudId} forKit:[[self class] kitCode]];
+    [_adobe sendRequestWithMarketingCloudId:marketingCloudId advertiserId:advertiserId pushToken:pushToken organizationId:_organizationId userIdentities:userIdentities completion:^(NSString *marketingCloudId, NSString *locationHint, NSString *blob, NSError *error) {
+        if (error) {
+            NSLog(@"mParticle -> Adobe kit request failed with error: %@", error);
+            return;
+        }
+        
+        NSMutableDictionary *integrationAttributes = [NSMutableDictionary dictionary];
+        if (marketingCloudId.length) {
+            [integrationAttributes setObject:marketingCloudId forKey:marketingCloudIdIntegrationAttributeKey];
+        }
+        if (locationHint.length) {
+            [integrationAttributes setObject:locationHint forKey:locationHintIntegrationAttributeKey];
+        }
+        if (blob.length) {
+            [integrationAttributes setObject:blob forKey:blobIntegrationAttributeKey];
+        }
+        
+        if (integrationAttributes.count) {
+            [[MParticle sharedInstance] setIntegrationAttributes:integrationAttributes forKit:[[self class] kitCode]];
         }
     }];
 }
