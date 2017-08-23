@@ -12,13 +12,13 @@ NSString *organizationIdConfigurationKey = @"organizationId";
 @property (nonatomic) NSString *organizationId;
 @property (nonatomic) MPIAdobe *adobe;
 @property (nonatomic) NSString *pushToken;
-@property (nonatomic) MPKitAPI *kitApi;
 
 @end
 
 @implementation MPKitAdobe
 
 @synthesize userIdentities = _userIdentities;
+@synthesize kitApi = _kitApi;
 
 + (NSNumber *)kitCode {
     return @124;
@@ -46,7 +46,6 @@ NSString *organizationIdConfigurationKey = @"organizationId";
     _configuration = configuration;
     _started       = startImmediately;
     _adobe         = [[MPIAdobe alloc] init];
-    _kitApi        = [[MPKitAPI alloc] initWithKitCode:[[self class] kitCode]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                            selector:@selector(didEnterBackground:)
