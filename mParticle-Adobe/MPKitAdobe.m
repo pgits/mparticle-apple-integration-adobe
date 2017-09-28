@@ -4,7 +4,7 @@
 NSString *marketingCloudIdIntegrationAttributeKey = @"mid";
 NSString *blobIntegrationAttributeKey = @"aamb";
 NSString *locationHintIntegrationAttributeKey = @"aamlh";
-NSString *organizationIdConfigurationKey = @"organizationId";
+NSString *organizationIdConfigurationKey = @"organizationID";
 
 #pragma mark - MPKitAdobe
 @interface MPKitAdobe ()
