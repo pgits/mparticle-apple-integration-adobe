@@ -27,24 +27,24 @@ NSString *organizationIdConfigurationKey = @"organizationID";
 
 + (void)load {
     MPKitRegister *kitRegister = [[MPKitRegister alloc] initWithName:@"Adobe"
-                                                           className:NSStringFromClass(self)
-                                                    startImmediately:YES];
+                                                           className:NSStringFromClass(self)];
     [MParticle registerExtension:kitRegister];
 }
 
 
 #pragma mark MPKitInstanceProtocol methods
 
-- (nonnull instancetype)initWithConfiguration:(nonnull NSDictionary *)configuration startImmediately:(BOOL)startImmediately {
-    self = [super init];
+- (MPKitExecStatus *)didFinishLaunchingWithConfiguration:(NSDictionary *)configuration {
+    MPKitExecStatus *execStatus = nil;
 
     _organizationId = [configuration[organizationIdConfigurationKey] copy];
-    if (!self || !_organizationId.length) {
-        return nil;
+    if (!_organizationId.length) {
+        execStatus = [[MPKitExecStatus alloc] initWithSDKCode:[[self class] kitCode] returnCode:MPKitReturnCodeRequirementsNotMet];
+        return execStatus;
     }
 
     _configuration = configuration;
-    _started       = startImmediately;
+    _started       = YES;
     _adobe         = [[MPIAdobe alloc] init];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -66,7 +66,8 @@ NSString *organizationIdConfigurationKey = @"organizationID";
                                                           userInfo:userInfo];
     });
 
-    return self;
+    execStatus = [[MPKitExecStatus alloc] initWithSDKCode:[[self class] kitCode] returnCode:MPKitReturnCodeSuccess];
+    return execStatus;
 }
 
 - (NSString *)marketingCloudIdFromIntegrationAttributes {
