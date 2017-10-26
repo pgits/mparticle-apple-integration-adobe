@@ -11,6 +11,7 @@ NSString *organizationIdConfigurationKey = @"organizationID";
 
 @property (nonatomic) NSString *organizationId;
 @property (nonatomic) MPIAdobe *adobe;
+@property (nonatomic) BOOL hasSetMCID;
 @property (nonatomic) NSString *pushToken;
 
 @end
@@ -42,7 +43,7 @@ NSString *organizationIdConfigurationKey = @"organizationID";
     if (!self || !_organizationId.length) {
         return nil;
     }
-
+    
     _configuration = configuration;
     _started       = startImmediately;
     _adobe         = [[MPIAdobe alloc] init];
@@ -109,6 +110,7 @@ NSString *organizationIdConfigurationKey = @"organizationID";
         marketingCloudId = [_adobe marketingCloudIdFromUserDefaults];
         if (marketingCloudId.length) {
             [[MParticle sharedInstance] setIntegrationAttributes:@{marketingCloudIdIntegrationAttributeKey: marketingCloudId} forKit:[[self class] kitCode]];
+            _hasSetMCID = YES;
         }
     }
     
@@ -134,6 +136,7 @@ NSString *organizationIdConfigurationKey = @"organizationID";
         
         if (integrationAttributes.count) {
             [[MParticle sharedInstance] setIntegrationAttributes:integrationAttributes forKit:[[self class] kitCode]];
+            _hasSetMCID = YES;
         }
     }];
 }
@@ -164,6 +167,10 @@ NSString *organizationIdConfigurationKey = @"organizationID";
 
 - (void)willTerminate:(NSNotification *)notification {
     [self sendNetworkRequest];
+}
+
+- (BOOL)shouldDelayMParticleUpload {
+    return !_hasSetMCID;
 }
 
 @end
