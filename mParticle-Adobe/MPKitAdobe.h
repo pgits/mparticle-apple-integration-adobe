@@ -5,10 +5,17 @@
 #import "mParticle.h"
 #endif
 
+#pragma mark - MPIAdobeApi
+@interface MPIAdobeApi : NSObject
+
+/// Returns the Adobe Marketing Cloud ID if present
+@property (readwrite, nullable) NSString *marketingCloudID;
+
+@end
+
 #pragma mark - MPKitAdobe
 @interface MPKitAdobe : NSObject <MPKitProtocol>
 
 @property (nonatomic, strong, nonnull) NSDictionary *configuration;
 @property (nonatomic, unsafe_unretained, readonly) BOOL started;
-
 @end
