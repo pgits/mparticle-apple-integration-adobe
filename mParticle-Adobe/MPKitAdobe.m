@@ -6,6 +6,13 @@ NSString *blobIntegrationAttributeKey = @"aamb";
 NSString *locationHintIntegrationAttributeKey = @"aamlh";
 NSString *organizationIdConfigurationKey = @"organizationID";
 
+#pragma mark - MPIAdobeApi
+@implementation MPIAdobeApi
+
+@synthesize marketingCloudID;
+
+@end
+
 #pragma mark - MPKitAdobe
 @interface MPKitAdobe ()
 
@@ -68,6 +75,12 @@ NSString *organizationIdConfigurationKey = @"organizationID";
     });
 
     return self;
+}
+
+- (id)providerKitInstance {
+    MPIAdobeApi *adobeApi = [[MPIAdobeApi alloc] init];
+    adobeApi.marketingCloudID = [self marketingCloudIdFromIntegrationAttributes];
+    return adobeApi;
 }
 
 - (NSString *)marketingCloudIdFromIntegrationAttributes {
