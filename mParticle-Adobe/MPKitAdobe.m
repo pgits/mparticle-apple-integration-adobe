@@ -64,9 +64,8 @@ NSString *organizationIdConfigurationKey = @"organizationID";
                                name:UIApplicationWillTerminateNotification
                              object:nil];
     
-    [self sendNetworkRequest];
-
     dispatch_async(dispatch_get_main_queue(), ^{
+        [self sendNetworkRequest];
         NSDictionary *userInfo = @{ mParticleKitInstanceKey: [[self class] kitCode] };
 
         [[NSNotificationCenter defaultCenter] postNotificationName:mParticleKitDidBecomeActiveNotification
