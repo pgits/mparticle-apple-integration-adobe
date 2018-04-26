@@ -25,9 +25,6 @@ NSString *organizationIdConfigurationKey = @"organizationID";
 
 @implementation MPKitAdobe
 
-@synthesize userIdentities = _userIdentities;
-@synthesize kitApi = _kitApi;
-
 + (NSNumber *)kitCode {
     return @124;
 }
@@ -129,7 +126,8 @@ NSString *organizationIdConfigurationKey = @"organizationID";
     
     NSString *advertiserId = [self advertiserId];
     NSString *pushToken = [self pushToken];
-    NSDictionary *userIdentities = _kitApi.userIdentities;
+    FilteredMParticleUser *user = [self currentUser];
+    NSDictionary *userIdentities = user.userIdentities;
     [_adobe sendRequestWithMarketingCloudId:marketingCloudId advertiserId:advertiserId pushToken:pushToken organizationId:_organizationId userIdentities:userIdentities completion:^(NSString *marketingCloudId, NSString *locationHint, NSString *blob, NSError *error) {
         if (error) {
             NSLog(@"mParticle -> Adobe kit request failed with error: %@", error);
@@ -184,6 +182,20 @@ NSString *organizationIdConfigurationKey = @"organizationID";
 
 - (BOOL)shouldDelayMParticleUpload {
     return !_hasSetMCID;
+}
+
+- (MPKitAPI *)kitApi {
+    if (_kitApi == nil) {
+        _kitApi = [[MPKitAPI alloc] init];
+    }
+    
+    return _kitApi;
+}
+
+#pragma helper methods
+
+- (FilteredMParticleUser *)currentUser {
+    return [[self kitApi] getCurrentUserWithKit:self];
 }
 
 @end
