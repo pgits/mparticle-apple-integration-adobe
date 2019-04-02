@@ -147,7 +147,7 @@ NSString *organizationIdConfigurationKey = @"organizationID";
         
         if (integrationAttributes.count) {
             [[MParticle sharedInstance] setIntegrationAttributes:integrationAttributes forKit:[[self class] kitCode]];
-            _hasSetMCID = YES;
+            self->_hasSetMCID = YES;
         }
     }];
 }
