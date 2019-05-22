@@ -151,7 +151,7 @@ NSString *marketingCloudIdUserDefaultsKey = @"ADBMOBILE_PERSISTED_MID";
         if (error) {
             return callbackWithCode(MPIAdobeErrorCodeClientFailedRequestError, @"Request failed", error);
         }
-
+        
         NSDictionary *dictionary = nil;
         @try {
             dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -169,7 +169,7 @@ NSString *marketingCloudIdUserDefaultsKey = @"ADBMOBILE_PERSISTED_MID";
         if ([marketingCloudId isEqualToString:invalidMarketingCloudId]) {
             marketingCloudId = nil;
         }
-
+        
         NSString *region = [NSString stringWithFormat:@"%@", dictionary[regionKey]];
         NSString *blob = dictionary[blobKey];
         

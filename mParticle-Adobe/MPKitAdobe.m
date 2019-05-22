@@ -41,7 +41,7 @@ NSString *organizationIdConfigurationKey = @"organizationID";
 
 - (MPKitExecStatus *)didFinishLaunchingWithConfiguration:(NSDictionary *)configuration {
     MPKitExecStatus *execStatus = nil;
-
+    
     _organizationId = [configuration[organizationIdConfigurationKey] copy];
     if (!_organizationId.length) {
         execStatus = [[MPKitExecStatus alloc] initWithSDKCode:[[self class] kitCode] returnCode:MPKitReturnCodeRequirementsNotMet];
@@ -53,23 +53,23 @@ NSString *organizationIdConfigurationKey = @"organizationID";
     _adobe         = [[MPIAdobe alloc] init];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                           selector:@selector(didEnterBackground:)
-                               name:UIApplicationDidEnterBackgroundNotification
-                             object:nil];
+                                             selector:@selector(didEnterBackground:)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                           selector:@selector(willTerminate:)
-                               name:UIApplicationWillTerminateNotification
-                             object:nil];
+                                             selector:@selector(willTerminate:)
+                                                 name:UIApplicationWillTerminateNotification
+                                               object:nil];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self sendNetworkRequest];
         NSDictionary *userInfo = @{ mParticleKitInstanceKey: [[self class] kitCode] };
-
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:mParticleKitDidBecomeActiveNotification
                                                             object:nil
                                                           userInfo:userInfo];
     });
-
+    
     execStatus = [[MPKitExecStatus alloc] initWithSDKCode:[[self class] kitCode] returnCode:MPKitReturnCodeSuccess];
     return execStatus;
 }
