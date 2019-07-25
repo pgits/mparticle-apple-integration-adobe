@@ -13,7 +13,7 @@ This repository contains the [Adobe](https://www.adobe.com) integration for the 
     OR
 
     ```
-    github 'mparticle-integrations/mparticle-apple-integration-adobe' ~> 7.0
+    github "mparticle-integrations/mparticle-apple-integration-adobe" ~> 7.0
     ```
 
 2. Follow the mParticle iOS SDK [quick-start](https://github.com/mParticle/mparticle-apple-sdk), then rebuild and launch your app, and verify that you see `"Included kits: { Adobe }"` in your Xcode console 
