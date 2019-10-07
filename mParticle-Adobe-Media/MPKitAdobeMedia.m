@@ -9,7 +9,7 @@
 #import "ACPSignal.h"
 #import "ACPMediaConstants.h"
 
-@import mParticle_Apple_Media;
+@import mParticle_Apple_Media_SDK;
 @import mParticle_Apple_SDK;
 
 NSString *marketingCloudIdIntegrationAttributeKey = @"mid";
