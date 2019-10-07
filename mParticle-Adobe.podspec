@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = "mParticle-Adobe"
-    s.version          = "7.11.0"
+    s.version          = "7.12.0"
     s.summary          = "Adobe integration for mParticle"
 
     s.description      = <<-DESC
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
     s.subspec 'Adobe' do |ss|
         ss.ios.deployment_target = "8.0"
         ss.ios.source_files      = 'mParticle-Adobe/*.{h,m}'
-        ss.ios.dependency 'mParticle-Apple-SDK/mParticle', '~> 7.11.0'
+        ss.ios.dependency 'mParticle-Apple-SDK/mParticle', '~> 7.12.0'
     s.ios.framework = 'UIKit'
     end
 
