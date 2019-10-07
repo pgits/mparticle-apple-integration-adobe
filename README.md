@@ -9,7 +9,7 @@ This repository contains the [Adobe](https://www.adobe.com) integration for the 
 > To send media data to Adobe, you must use CocoaPods since their SDKs do not support Carthage
 
 ```
-pod 'mParticle-Adobe/AdobeHeartbeat', '~> 7.0'
+pod 'mParticle-Adobe/AdobeMedia', '~> 7.0'
 ```
 
 > Otherwise, for the previous non-media Adobe integration, you can integrate via Carthage or CocoaPods
@@ -24,7 +24,7 @@ OR
 github "mparticle-integrations/mparticle-apple-integration-adobe" ~> 7.0
 ```
 
-2. Follow the mParticle iOS SDK [quick-start](https://github.com/mParticle/mparticle-apple-sdk), then rebuild and launch your app, and verify that you see `"Included kits: { AdobeHeartbeat }"` or `"Included kits: { Adobe }"` or in your Xcode console
+2. Follow the mParticle iOS SDK [quick-start](https://github.com/mParticle/mparticle-apple-sdk), then rebuild and launch your app, and verify that you see `"Included kits: { AdobeMedia }"` or `"Included kits: { Adobe }"` or in your Xcode console
 
 > (This requires your mParticle log level to be at least Debug)
 

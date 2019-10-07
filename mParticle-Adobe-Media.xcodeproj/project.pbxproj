@@ -7,27 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F60DECCEA7A3FED2127E486 /* Pods_mParticle_Adobe_Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD6F6EA14B7F098A5570C8B /* Pods_mParticle_Adobe_Heartbeat.framework */; };
+		2F60DECCEA7A3FED2127E486 /* Pods_mParticle_Adobe_Media.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD6F6EA14B7F098A5570C8B /* Pods_mParticle_Adobe_Media.framework */; };
 		D30B695F2333DE1A002FE9F2 /* MPIAdobe.h in Headers */ = {isa = PBXBuildFile; fileRef = D30B695D2333DE1A002FE9F2 /* MPIAdobe.h */; };
 		D30B69602333DE1A002FE9F2 /* MPIAdobe.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B695E2333DE1A002FE9F2 /* MPIAdobe.m */; };
-		D31BBD9E2327FF0B008C510B /* mParticle_Adobe_Heartbeat.h in Headers */ = {isa = PBXBuildFile; fileRef = D31BBD9C2327FF0B008C510B /* mParticle_Adobe_Heartbeat.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D31BBDA62328007B008C510B /* MPKitAdobeHeartbeat.h in Headers */ = {isa = PBXBuildFile; fileRef = D31BBDA42328007B008C510B /* MPKitAdobeHeartbeat.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D31BBDA72328007B008C510B /* MPKitAdobeHeartbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBDA52328007B008C510B /* MPKitAdobeHeartbeat.m */; };
+		D31BBD9E2327FF0B008C510B /* mParticle_Adobe_Media.h in Headers */ = {isa = PBXBuildFile; fileRef = D31BBD9C2327FF0B008C510B /* mParticle_Adobe_Media.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D31BBDA62328007B008C510B /* MPKitAdobeMedia.h in Headers */ = {isa = PBXBuildFile; fileRef = D31BBDA42328007B008C510B /* MPKitAdobeMedia.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D31BBDA72328007B008C510B /* MPKitAdobeMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = D31BBDA52328007B008C510B /* MPKitAdobeMedia.m */; };
 		D31BBDA9232818BD008C510B /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31BBDA8232818BD008C510B /* Dummy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3BD6F6EA14B7F098A5570C8B /* Pods_mParticle_Adobe_Heartbeat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mParticle_Adobe_Heartbeat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F7D178A9527F1BDA3990282 /* Pods-mParticle-Adobe-Heartbeat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mParticle-Adobe-Heartbeat.release.xcconfig"; path = "Target Support Files/Pods-mParticle-Adobe-Heartbeat/Pods-mParticle-Adobe-Heartbeat.release.xcconfig"; sourceTree = "<group>"; };
+		3BD6F6EA14B7F098A5570C8B /* Pods_mParticle_Adobe_Media.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mParticle_Adobe_Media.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F7D178A9527F1BDA3990282 /* Pods-mParticle-Adobe-Media.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mParticle-Adobe-Media.release.xcconfig"; path = "Target Support Files/Pods-mParticle-Adobe-Media/Pods-mParticle-Adobe-Media.release.xcconfig"; sourceTree = "<group>"; };
 		D30B695D2333DE1A002FE9F2 /* MPIAdobe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPIAdobe.h; sourceTree = "<group>"; };
 		D30B695E2333DE1A002FE9F2 /* MPIAdobe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPIAdobe.m; sourceTree = "<group>"; };
-		D31BBD992327FF0B008C510B /* mParticle_Adobe_Heartbeat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = mParticle_Adobe_Heartbeat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D31BBD9C2327FF0B008C510B /* mParticle_Adobe_Heartbeat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mParticle_Adobe_Heartbeat.h; sourceTree = "<group>"; };
+		D31BBD992327FF0B008C510B /* mParticle_Adobe_Media.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = mParticle_Adobe_Media.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D31BBD9C2327FF0B008C510B /* mParticle_Adobe_Media.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mParticle_Adobe_Media.h; sourceTree = "<group>"; };
 		D31BBD9D2327FF0B008C510B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D31BBDA42328007B008C510B /* MPKitAdobeHeartbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPKitAdobeHeartbeat.h; sourceTree = "<group>"; };
-		D31BBDA52328007B008C510B /* MPKitAdobeHeartbeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPKitAdobeHeartbeat.m; sourceTree = "<group>"; };
+		D31BBDA42328007B008C510B /* MPKitAdobeMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPKitAdobeMedia.h; sourceTree = "<group>"; };
+		D31BBDA52328007B008C510B /* MPKitAdobeMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPKitAdobeMedia.m; sourceTree = "<group>"; };
 		D31BBDA8232818BD008C510B /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
-		F15D27BF44157B5796E73E7D /* Pods-mParticle-Adobe-Heartbeat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mParticle-Adobe-Heartbeat.debug.xcconfig"; path = "Target Support Files/Pods-mParticle-Adobe-Heartbeat/Pods-mParticle-Adobe-Heartbeat.debug.xcconfig"; sourceTree = "<group>"; };
+		F15D27BF44157B5796E73E7D /* Pods-mParticle-Adobe-Media.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mParticle-Adobe-Media.debug.xcconfig"; path = "Target Support Files/Pods-mParticle-Adobe-Media/Pods-mParticle-Adobe-Media.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F60DECCEA7A3FED2127E486 /* Pods_mParticle_Adobe_Heartbeat.framework in Frameworks */,
+				2F60DECCEA7A3FED2127E486 /* Pods_mParticle_Adobe_Media.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,7 +45,7 @@
 		BC585BC20FA8F72C03E32856 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3BD6F6EA14B7F098A5570C8B /* Pods_mParticle_Adobe_Heartbeat.framework */,
+				3BD6F6EA14B7F098A5570C8B /* Pods_mParticle_Adobe_Media.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -53,7 +53,7 @@
 		D31BBD8F2327FF0B008C510B = {
 			isa = PBXGroup;
 			children = (
-				D31BBD9B2327FF0B008C510B /* mParticle-Adobe-Heartbeat */,
+				D31BBD9B2327FF0B008C510B /* mParticle-Adobe-Media */,
 				D31BBD9A2327FF0B008C510B /* Products */,
 				F536DDCF1123C7AEFCB1AD2D /* Pods */,
 				BC585BC20FA8F72C03E32856 /* Frameworks */,
@@ -63,30 +63,30 @@
 		D31BBD9A2327FF0B008C510B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D31BBD992327FF0B008C510B /* mParticle_Adobe_Heartbeat.framework */,
+				D31BBD992327FF0B008C510B /* mParticle_Adobe_Media.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D31BBD9B2327FF0B008C510B /* mParticle-Adobe-Heartbeat */ = {
+		D31BBD9B2327FF0B008C510B /* mParticle-Adobe-Media */ = {
 			isa = PBXGroup;
 			children = (
-				D31BBDA42328007B008C510B /* MPKitAdobeHeartbeat.h */,
-				D31BBDA52328007B008C510B /* MPKitAdobeHeartbeat.m */,
+				D31BBDA42328007B008C510B /* MPKitAdobeMedia.h */,
+				D31BBDA52328007B008C510B /* MPKitAdobeMedia.m */,
 				D30B695D2333DE1A002FE9F2 /* MPIAdobe.h */,
 				D30B695E2333DE1A002FE9F2 /* MPIAdobe.m */,
-				D31BBD9C2327FF0B008C510B /* mParticle_Adobe_Heartbeat.h */,
+				D31BBD9C2327FF0B008C510B /* mParticle_Adobe_Media.h */,
 				D31BBD9D2327FF0B008C510B /* Info.plist */,
 				D31BBDA8232818BD008C510B /* Dummy.swift */,
 			);
-			path = "mParticle-Adobe-Heartbeat";
+			path = "mParticle-Adobe-Media";
 			sourceTree = "<group>";
 		};
 		F536DDCF1123C7AEFCB1AD2D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F15D27BF44157B5796E73E7D /* Pods-mParticle-Adobe-Heartbeat.debug.xcconfig */,
-				8F7D178A9527F1BDA3990282 /* Pods-mParticle-Adobe-Heartbeat.release.xcconfig */,
+				F15D27BF44157B5796E73E7D /* Pods-mParticle-Adobe-Media.debug.xcconfig */,
+				8F7D178A9527F1BDA3990282 /* Pods-mParticle-Adobe-Media.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -98,18 +98,18 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D31BBD9E2327FF0B008C510B /* mParticle_Adobe_Heartbeat.h in Headers */,
+				D31BBD9E2327FF0B008C510B /* mParticle_Adobe_Media.h in Headers */,
 				D30B695F2333DE1A002FE9F2 /* MPIAdobe.h in Headers */,
-				D31BBDA62328007B008C510B /* MPKitAdobeHeartbeat.h in Headers */,
+				D31BBDA62328007B008C510B /* MPKitAdobeMedia.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		D31BBD982327FF0B008C510B /* mParticle-Adobe-Heartbeat */ = {
+		D31BBD982327FF0B008C510B /* mParticle-Adobe-Media */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D31BBDA12327FF0B008C510B /* Build configuration list for PBXNativeTarget "mParticle-Adobe-Heartbeat" */;
+			buildConfigurationList = D31BBDA12327FF0B008C510B /* Build configuration list for PBXNativeTarget "mParticle-Adobe-Media" */;
 			buildPhases = (
 				2B51DD3CA942351D13086AF4 /* [CP] Check Pods Manifest.lock */,
 				D31BBD942327FF0B008C510B /* Headers */,
@@ -121,9 +121,9 @@
 			);
 			dependencies = (
 			);
-			name = "mParticle-Adobe-Heartbeat";
-			productName = "mParticle-Adobe-Heartbeat";
-			productReference = D31BBD992327FF0B008C510B /* mParticle_Adobe_Heartbeat.framework */;
+			name = "mParticle-Adobe-Media";
+			productName = "mParticle-Adobe-Media";
+			productReference = D31BBD992327FF0B008C510B /* mParticle_Adobe_Media.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -141,7 +141,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D31BBD932327FF0B008C510B /* Build configuration list for PBXProject "mParticle-Adobe-Heartbeat" */;
+			buildConfigurationList = D31BBD932327FF0B008C510B /* Build configuration list for PBXProject "mParticle-Adobe-Media" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -154,7 +154,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D31BBD982327FF0B008C510B /* mParticle-Adobe-Heartbeat */,
+				D31BBD982327FF0B008C510B /* mParticle-Adobe-Media */,
 			);
 		};
 /* End PBXProject section */
@@ -185,7 +185,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-mParticle-Adobe-Heartbeat-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-mParticle-Adobe-Media-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -200,7 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D31BBDA9232818BD008C510B /* Dummy.swift in Sources */,
-				D31BBDA72328007B008C510B /* MPKitAdobeHeartbeat.m in Sources */,
+				D31BBDA72328007B008C510B /* MPKitAdobeMedia.m in Sources */,
 				D30B69602333DE1A002FE9F2 /* MPIAdobe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,7 +326,7 @@
 		};
 		D31BBDA22327FF0B008C510B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F15D27BF44157B5796E73E7D /* Pods-mParticle-Adobe-Heartbeat.debug.xcconfig */;
+			baseConfigurationReference = F15D27BF44157B5796E73E7D /* Pods-mParticle-Adobe-Media.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -334,14 +334,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "mParticle-Adobe-Heartbeat/Info.plist";
+				INFOPLIST_FILE = "mParticle-Adobe-Media/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mparticle.mParticle-Adobe-Heartbeat";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mparticle.mParticle-Adobe-Media";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -352,7 +352,7 @@
 		};
 		D31BBDA32327FF0B008C510B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8F7D178A9527F1BDA3990282 /* Pods-mParticle-Adobe-Heartbeat.release.xcconfig */;
+			baseConfigurationReference = 8F7D178A9527F1BDA3990282 /* Pods-mParticle-Adobe-Media.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -360,14 +360,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "mParticle-Adobe-Heartbeat/Info.plist";
+				INFOPLIST_FILE = "mParticle-Adobe-Media/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mparticle.mParticle-Adobe-Heartbeat";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mparticle.mParticle-Adobe-Media";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -378,7 +378,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D31BBD932327FF0B008C510B /* Build configuration list for PBXProject "mParticle-Adobe-Heartbeat" */ = {
+		D31BBD932327FF0B008C510B /* Build configuration list for PBXProject "mParticle-Adobe-Media" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D31BBD9F2327FF0B008C510B /* Debug */,
@@ -387,7 +387,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D31BBDA12327FF0B008C510B /* Build configuration list for PBXNativeTarget "mParticle-Adobe-Heartbeat" */ = {
+		D31BBDA12327FF0B008C510B /* Build configuration list for PBXNativeTarget "mParticle-Adobe-Media" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D31BBDA22327FF0B008C510B /* Debug */,

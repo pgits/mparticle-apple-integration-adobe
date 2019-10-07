@@ -5,4 +5,4 @@ script:
 - travis_retry pod repo update > /dev/null
 - pod lib lint --use-libraries --allow-warnings || pod lib lint --allow-warnings
 - pod install
-- xcodebuild -workspace mParticle-Adobe-Heartbeat.xcworkspace -scheme mParticle-Adobe-Heartbeat -destination 'platform=iOS Simulator,OS=13.0,name=iPhone 11 Pro Max' build
+- xcodebuild -workspace mParticle-Adobe-Media.xcworkspace -scheme mParticle-Adobe-Media -destination 'platform=iOS Simulator,OS=13.0,name=iPhone 11 Pro Max' build

@@ -1,4 +1,4 @@
-#import "MPKitAdobeHeartbeat.h"
+#import "MPKitAdobeMedia.h"
 #import "MPIAdobe.h"
 #import "ACPCore.h"
 #import "ACPAnalytics.h"
@@ -25,7 +25,7 @@ NSString *launchAppIdKey = @"launchAppId";
 
 @end
 
-@interface MPKitAdobeHeartbeat ()
+@interface MPKitAdobeMedia ()
 
 @property (nonatomic) NSString *organizationId;
 @property (nonatomic) MPIAdobe *adobe;
@@ -35,14 +35,14 @@ NSString *launchAppIdKey = @"launchAppId";
 
 @end
 
-@implementation MPKitAdobeHeartbeat
+@implementation MPKitAdobeMedia
 
 + (NSNumber *)kitCode {
     return @124;
 }
 
 + (void)load {
-    MPKitRegister *kitRegister = [[MPKitRegister alloc] initWithName:@"AdobeHeartbeat" className:NSStringFromClass(self)];
+    MPKitRegister *kitRegister = [[MPKitRegister alloc] initWithName:@"AdobeMedia" className:NSStringFromClass(self)];
     [MParticle registerExtension:kitRegister];
 }
 
@@ -193,7 +193,7 @@ NSString *launchAppIdKey = @"launchAppId";
             [_mediaTracker updateCurrentPlayhead:mediaEvent.playheadPosition.doubleValue];
             break;
         case MPMediaEventTypeAdClick:
-            //Heartbeat does not track Ad interaction
+            //Media does not track Ad interaction
             break;
         case MPMediaEventTypeAdBreakStart: {
             NSDictionary* adBreakObject = [ACPMedia createAdBreakObjectWithName:mediaEvent.adBreak.title position:1 startTime:0];
@@ -260,7 +260,7 @@ NSString *launchAppIdKey = @"launchAppId";
             break;
     }
 
-    return [[MPKitExecStatus alloc] initWithSDKCode:[MPKitAdobeHeartbeat kitCode] returnCode:MPKitReturnCodeSuccess];
+    return [[MPKitExecStatus alloc] initWithSDKCode:[MPKitAdobeMedia kitCode] returnCode:MPKitReturnCodeSuccess];
 }
 
 #pragma mark Private Methods

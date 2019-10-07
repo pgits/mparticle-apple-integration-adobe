@@ -2,9 +2,9 @@
 platform :ios, '11.0'
 source 'https://github.com/CocoaPods/Specs.git'
 
-project 'mParticle-Adobe-Heartbeat.xcodeproj'
+project 'mParticle-Adobe-Media.xcodeproj'
 
-target 'mParticle-Adobe-Heartbeat' do
+target 'mParticle-Adobe-Media' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 

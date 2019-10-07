@@ -13,7 +13,7 @@
 
 @end
 
-@interface MPKitAdobeHeartbeat : NSObject <MPKitProtocol>
+@interface MPKitAdobeMedia : NSObject <MPKitProtocol>
 
 @property (nonatomic, strong, nonnull) NSDictionary *configuration;
 @property (nonatomic, strong, nullable) NSDictionary *launchOptions;

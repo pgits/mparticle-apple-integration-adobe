@@ -22,9 +22,9 @@ Pod::Spec.new do |s|
     s.ios.framework = 'UIKit'
     end
 
-    s.subspec 'AdobeHeartbeat' do |ss|
+    s.subspec 'AdobeMedia' do |ss|
         ss.ios.deployment_target = "9.0"
-        ss.ios.source_files      = 'mParticle-Adobe-Heartbeat/*.{h,m}'
+        ss.ios.source_files      = 'mParticle-Adobe-Media/*.{h,m}'
         ss.ios.dependency 'mParticle-Apple-SDK', '~> 7.11.0'
         ss.ios.dependency 'mParticle-Apple-Media', '~> 1.0.0-beta.1'
         ss.ios.dependency 'ACPMedia', '~> 1.0'

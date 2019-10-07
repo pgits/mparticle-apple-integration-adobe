@@ -1,5 +1,5 @@
 #import "MPIAdobe.h"
-#import "MPKitAdobeHeartbeat.h"
+#import "MPKitAdobeMedia.h"
 
 NSString *const MPIAdobeErrorKey = @"MPIAdobeErrorKey";
 
