@@ -15,15 +15,16 @@ Pod::Spec.new do |s|
 
     s.static_framework = true
 
+    s.ios.deployment_target = "10.0"
+    s.default_subspec = 'AdobeMedia'
+
     s.subspec 'Adobe' do |ss|
-        ss.ios.deployment_target = "8.0"
         ss.ios.source_files      = 'mParticle-Adobe/*.{h,m}'
         ss.ios.dependency 'mParticle-Apple-SDK/mParticle', '~> 7.12.0'
     s.ios.framework = 'UIKit'
     end
 
     s.subspec 'AdobeMedia' do |ss|
-        ss.ios.deployment_target = "9.0"
         ss.ios.source_files      = 'mParticle-Adobe-Media/*.{h,m}'
         ss.ios.dependency 'mParticle-Apple-SDK', '~> 7.12.0'
         ss.ios.dependency 'mParticle-Apple-Media-SDK', '~> 1.0.0-beta.1'

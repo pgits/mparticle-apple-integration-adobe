@@ -7,5 +7,5 @@ FOUNDATION_EXPORT double mParticle_Adobe_MediaVersionNumber;
 FOUNDATION_EXPORT const unsigned char mParticle_Adobe_MediaVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <mParticle_Adobe_Media/PublicHeader.h>
-#import <mParticle_Adobe_Media/MPKitAdobeMedia.h>
+#import <mParticle_Adobe/MPKitAdobeMedia.h>
 
