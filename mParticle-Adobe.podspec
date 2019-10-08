@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
     s.social_media_url = "https://twitter.com/mparticle"
 
     s.static_framework = true
+    s.swift_version = "5.0"
 
     s.ios.deployment_target = "10.0"
     s.default_subspec = 'AdobeMedia'
