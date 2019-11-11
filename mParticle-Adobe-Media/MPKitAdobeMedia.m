@@ -152,14 +152,14 @@ NSString *launchAppIdKey = @"launchAppId";
  }
 
 - (MPKitExecStatus *)routeMediaEvent:(MPMediaEvent *)mediaEvent {
-    switch (mediaEvent.mediaEventType) {
-        case MPMediaEventTypePlay:
+    switch (mediaEvent.mediaEventName) {
+        case MPMediaEventNamePlay:
             [_mediaTracker trackPlay];
             break;
-        case MPMediaEventTypePause:
+        case MPMediaEventNamePause:
             [_mediaTracker trackPause];
             break;
-        case MPMediaEventTypeSessionStart: {
+        case MPMediaEventNameSessionStart: {
             NSString *streamType = [self streamTypeForMediaEvent:mediaEvent];
             ACPMediaType contentType = [self contentTypeForMediaEvent:mediaEvent];
             
@@ -170,42 +170,42 @@ NSString *launchAppIdKey = @"launchAppId";
             [_mediaTracker trackSessionStart:mediaObject data:mediaMetadata];
             break;
         }
-        case MPMediaEventTypeSessionEnd:
+        case MPMediaEventNameSessionEnd:
             [_mediaTracker trackSessionEnd];
             break;
-        case MPMediaEventTypeSeekStart: {
+        case MPMediaEventNameSeekStart: {
             [_mediaTracker trackEvent:ACPMediaEventSeekStart info:nil data:nil];
             break;
         }
-        case MPMediaEventTypeSeekEnd: {
+        case MPMediaEventNameSeekEnd: {
             [_mediaTracker trackEvent:ACPMediaEventSeekComplete info:nil data:nil];
             break;
         }
-        case MPMediaEventTypeBufferStart: {
+        case MPMediaEventNameBufferStart: {
             [_mediaTracker trackEvent:ACPMediaEventBufferStart info:nil data:nil];
             break;
         }
-        case MPMediaEventTypeBufferEnd: {
+        case MPMediaEventNameBufferEnd: {
             [_mediaTracker trackEvent:ACPMediaEventBufferComplete info:nil data:nil];
             break;
         }
-        case MPMediaEventTypeUpdatePlayheadPosition:
+        case MPMediaEventNameUpdatePlayheadPosition:
             [_mediaTracker updateCurrentPlayhead:mediaEvent.playheadPosition.doubleValue];
             break;
-        case MPMediaEventTypeAdClick:
+        case MPMediaEventNameAdClick:
             //Media does not track Ad interaction
             break;
-        case MPMediaEventTypeAdBreakStart: {
+        case MPMediaEventNameAdBreakStart: {
             NSDictionary* adBreakObject = [ACPMedia createAdBreakObjectWithName:mediaEvent.adBreak.title position:1 startTime:0];
             
             [_mediaTracker trackEvent:ACPMediaEventAdBreakStart info:adBreakObject data:nil];
             break;
         }
-        case MPMediaEventTypeAdBreakEnd: {
+        case MPMediaEventNameAdBreakEnd: {
             [_mediaTracker trackEvent:ACPMediaEventAdBreakComplete info:nil data:nil];
             break;
         }
-        case MPMediaEventTypeAdStart: {
+        case MPMediaEventNameAdStart: {
             NSDictionary* adObject = [ACPMedia createAdObjectWithName:mediaEvent.adContent.title adId:mediaEvent.adContent.id position:mediaEvent.adContent.placement.doubleValue length:mediaEvent.adContent.duration.doubleValue];
             NSMutableDictionary* adMetadata = [[NSMutableDictionary alloc] init];
             
@@ -228,29 +228,29 @@ NSString *launchAppIdKey = @"launchAppId";
             [_mediaTracker trackEvent:ACPMediaEventAdStart info:adObject data:adMetadata];
             break;
         }
-        case MPMediaEventTypeAdEnd: {
+        case MPMediaEventNameAdEnd: {
             [_mediaTracker trackEvent:ACPMediaEventAdComplete info:nil data:nil];
             break;
         }
-        case MPMediaEventTypeAdSkip: {
+        case MPMediaEventNameAdSkip: {
             [_mediaTracker trackEvent:ACPMediaEventAdSkip info:nil data:nil];
             break;
         }
-        case MPMediaEventTypeSegmentStart: {
+        case MPMediaEventNameSegmentStart: {
             NSDictionary* chapterObject = [ACPMedia createChapterObjectWithName:mediaEvent.segment.title position:mediaEvent.segment.index length:mediaEvent.segment.duration.doubleValue startTime:mediaEvent.playheadPosition.doubleValue];
             
             [_mediaTracker trackEvent:ACPMediaEventChapterStart info:chapterObject data:nil];
             break;
         }
-        case MPMediaEventTypeSegmentSkip: {
+        case MPMediaEventNameSegmentSkip: {
             [_mediaTracker trackEvent:ACPMediaEventChapterSkip info:nil data:nil];
            break;
        }
-        case MPMediaEventTypeSegmentEnd:  {
+        case MPMediaEventNameSegmentEnd:  {
             [_mediaTracker trackEvent:ACPMediaEventChapterComplete info:nil data:nil];
            break;
        }
-        case MPMediaEventTypeUpdateQoS: {
+        case MPMediaEventNameUpdateQoS: {
             NSDictionary* mediaQoS = [ACPMedia createQoEObjectWithBitrate:mediaEvent.qos.bitRate.doubleValue startupTime:mediaEvent.qos.startupTime.doubleValue fps:mediaEvent.qos.fps.doubleValue droppedFrames:mediaEvent.qos.droppedFrames.doubleValue];
             
             [_mediaTracker updateQoEObject:mediaQoS];
