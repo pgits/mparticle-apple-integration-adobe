@@ -11,7 +11,7 @@ let package = Package(
     targets: [
         .target(
             name: "mparticle-apple-integration-adobe",
-            path: "mParticle-Adobe-Media"
+            path: "mParticle-Adobe"
         )
     ]
 )
